@@ -19,19 +19,19 @@ print(check_data, end='\n\n')
 # nan variables return True (True = 1)
 check_data = read_data.isnull()
 
-# we sum the True values and find the number of nan values in the columns
+# sum the True values and find the number of nan values in the columns
 sum_true_variable = check_data.sum()
 print(sum_true_variable, end='\n\n')
 
 
-X = read_data.iloc[:, 2:8].values # these are indipendent variables
+X = read_data.iloc[:, 2:8].values  # these are indipendent variables
 y = read_data.iloc[:, -2].values  # these are dependent variables
-first_part = read_data.iloc[:, 0:2].values
-second_part = read_data.iloc[:, -1].values
 
-imputer = SimpleImputer(missing_values = np.nan, strategy = 'mean')
+
+imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
 impute = imputer.fit(X[:, 2:8])
 X[:, 2:8] = imputer.transform(X[:, 2:8])
 
 print(X, end='\n\n')
-print(np.isnan(X.any()), end='\n\n') # is there any True (nan) value ?
+print(np.isnan(X.any()), end='\n\n')  # is there any True (nan) value ?
+
